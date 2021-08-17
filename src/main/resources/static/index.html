@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet"href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+</head>
+<body>
+<div class="album py-5 bg-light">
+    <h1>Hullo bliad</h1>
+
+</div>
+<br>
+
+
+<img src="images/IMGa6369b3d9513ce57ecaaa73e386c0f98-400x400.jpg" height="400" width="400"/>
+<img src="images/hp_1.jpg" height="407" width="500"/>
+<br>
+
+
+
+
+<div class="container mt-5">
+
+    <div th:each="cat:${topCatsKey}" class="bg-warning mt-3 ">
+        <h3 th:text="${cat.catName}" />
+        <h5 th:text="${cat.id}+' Айди'" />
+        <p th:text="${cat.imageUrl}" />
+        <img th:src="${cat.imageUrl}"/>
+        <a th:href="'/blog/' + ${cat.id}" class="=btn btn-sm btn-info">Детальнее</a>
+        <a th:href="'/blog/' + ${cat.id}" class="btn btn-sm btn-outline-secondary">Детальнее</a>
+
+    </div>
+
+</div>
+</body>
+
+</html>
