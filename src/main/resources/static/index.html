@@ -27,7 +27,7 @@
         <h3 th:text="${cat.catName}" />
         <h5 th:text="${cat.id}+' Айди'" />
         <p th:text="${cat.imageUrl}" />
-        <img th:src="${cat.imageUrl}"/>
+        <img th:src="'imagesUp/'+${cat.imageUrl}" height="150" width="150"/>
         <a th:href="'/blog/' + ${cat.id}" class="=btn btn-sm btn-info">Детальнее</a>
         <a th:href="'/blog/' + ${cat.id}" class="btn btn-sm btn-outline-secondary">Детальнее</a>
 
