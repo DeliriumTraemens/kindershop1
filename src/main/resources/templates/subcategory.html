@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Субкатегории</title>
+    <link rel="stylesheet"href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+</head>
+<body>
+<h1>Субкатегории</h1>
+<br>
+<hr>
+<br>
+<hr>
+<div class="album py-5 bg-light">
+    <div class="container">
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+
+            <div class="mb-4" th:each="subCat:${subCatList}">
+                <!--карточка-->
+                <div class="col">
+                    <!--<div class="card shadow-sm">-->
+                    <div class="shadow p-3 mb-5 bg-white rounded">
+
+                        <img th:src="'../imagesUp/'+${subCat.imageUrl}" height="150" width="150"/>
+
+                        <div class="card-body" >
+                            <h4 class="lead text-muted" th:text="${subCat.catName}" />
+                            <p class="card-text" th:text="${subCat.id}"/>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <!--<a th:href="'/subcategory/' + ${subCat.id}" class="=btn btn-sm btn-success shadow">Субкатегории</a>-->
+                                    <a th:href="'/subcategoryProd/' + ${subCat.id}" class="=btn btn-sm btn-success shadow ">Подробнее</a>
+
+                                    <!-- <a th:href="'/blog/' + ${el.id} + '/edit'" class="btn btn-sm btn-outline-secondary">Edit</a>-->
+                                    <!--<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>-->
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<br>
+<hr>
+<!--<div class="container mt-5">
+
+    <div th:each="cat:${subCatList}" class="bg-warning mt-3 ">
+        <h3 th:text="${cat.catName}" />
+        <h5 th:text="${cat.id}+' Айди'" />
+        <p th:text="${cat.imageUrl}" />
+        <img th:src="'../imagesUp/'+${cat.imageUrl}" height="150" width="150"/>
+        <a th:href="'/blog/' + ${cat.id}" class="=btn btn-sm btn-info">Детальнее</a>
+        <a th:href="'/blog/' + ${cat.id}" class="btn btn-sm btn-outline-secondary">Детальнее</a>
+        <a th:href="'/subcategory/' + ${cat.id}" class="=btn btn-sm btn-info">Субкатегории</a>
+
+    </div>
+
+</div>-->
+</body>
+</html>

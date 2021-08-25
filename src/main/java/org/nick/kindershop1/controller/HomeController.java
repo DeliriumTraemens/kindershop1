@@ -1,11 +1,14 @@
 package org.nick.kindershop1.controller;
 
 import org.nick.kindershop1.entity.category.Category;
+import org.nick.kindershop1.entity.product.Product;
 import org.nick.kindershop1.jdbc.CategoryJdbcDao;
+import org.nick.kindershop1.jdbc.ProductJdbcDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -15,6 +18,9 @@ public class HomeController {
 	@Autowired
 	CategoryJdbcDao categoryJdbcDao;
 	
+	@Autowired
+	ProductJdbcDao productJdbcDao;
+	
 	@GetMapping("/")
 	public String home(Model model){
 		List<Category> topLevelCats = categoryJdbcDao.topLevelCategories();
@@ -22,6 +28,32 @@ public class HomeController {
 
 		return "../static/index";
 	}
+	
+	@GetMapping("/subcategory/{id}")
+	public String subcategoryId(@PathVariable(value = "id") int id, Model model){
+//		List<Category> subCategoryList = categoryJdbcDao.subCategoryes(id);
+//		List<Category> subCategoryList = categoryJdbcDao.subCategoryes(id);
+		model.addAttribute("subCatList", categoryJdbcDao.subCategoryes(id));
+		return "/subcategory";
+	}
+	
+	@GetMapping("/subcategoryProd/{id}")
+	public String subCatProd(@PathVariable(value = "id") int id, Model model){
+		model.addAttribute("subCategList", categoryJdbcDao.subCategoryes(id));
+		model.addAttribute("subCatProd",productJdbcDao.getAllProduct(id));
+		return "/subactproduct";
+	}
+	
+	@GetMapping("/product/{id}")
+	public String getProduct(@PathVariable(value = "id") int id, Model model){
+//		Product product = productJdbcDao.getProduct(id).get(0);
+		model.addAttribute("productCard",productJdbcDao.findOneById(id));
+		
+		return "/product";
+	}
+	
+	
+	
 	@GetMapping("/second")
 	public String second(){
 		return "../static/sec";

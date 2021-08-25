@@ -14,9 +14,49 @@
 <br>
 
 
-<img src="images/IMGa6369b3d9513ce57ecaaa73e386c0f98-400x400.jpg" height="400" width="400"/>
-<img src="images/hp_1.jpg" height="407" width="500"/>
+<hr>
 <br>
+<div class="album py-5 bg-light">
+    <div class="container">
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+
+            <div class="mb-4" th:each="cat:${topCatsKey}">
+                <!--карточка-->
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <!--<svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                             xmlns="http://www.w3.org/2000/svg"
+                             role="img" aria-label="Placeholder: Thumbnail"
+                             preserveAspectRatio="xMidYMid slice" focusable="false">
+                            <title>Placeholder</title>
+                            <rect width="100%" height="100%" fill="#55595c">
+
+                            </rect>
+                            <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail бля</text>
+                        </svg>-->
+                        <img  th:src="'imagesUp/'+${cat.imageUrl}" height="150" width="150"/>
+
+                        <div class="card-body" >
+                            <h4 class="lead text-muted" th:text="${cat.catName}" />
+                            <p class="card-text" th:text="${cat.id}"/>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a th:href="'/subcategory/' + ${cat.id}" class="=btn btn-sm btn-info">Субкатегории</a>
+                                   <!-- <a th:href="'/blog/' + ${el.id} + '/edit'" class="btn btn-sm btn-outline-secondary">Edit</a>-->
+                                    <!--<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>-->
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 
 
@@ -28,8 +68,9 @@
         <h5 th:text="${cat.id}+' Айди'" />
         <p th:text="${cat.imageUrl}" />
         <img th:src="'imagesUp/'+${cat.imageUrl}" height="150" width="150"/>
-        <a th:href="'/blog/' + ${cat.id}" class="=btn btn-sm btn-info">Детальнее</a>
-        <a th:href="'/blog/' + ${cat.id}" class="btn btn-sm btn-outline-secondary">Детальнее</a>
+        <!--<a th:href="'/blog/' + ${cat.id}" class="=btn btn-sm btn-info">Детальнее</a>
+        <a th:href="'/blog/' + ${cat.id}" class="btn btn-sm btn-outline-secondary">Детальнее</a>-->
+        <a th:href="'/subcategory/' + ${cat.id}" class="=btn btn-sm btn-info">Субкатегории</a>
 
     </div>
 
