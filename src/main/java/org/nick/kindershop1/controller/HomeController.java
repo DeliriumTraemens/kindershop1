@@ -31,8 +31,6 @@ public class HomeController {
 	
 	@GetMapping("/subcategory/{id}")
 	public String subcategoryId(@PathVariable(value = "id") int id, Model model){
-//		List<Category> subCategoryList = categoryJdbcDao.subCategoryes(id);
-//		List<Category> subCategoryList = categoryJdbcDao.subCategoryes(id);
 		model.addAttribute("subCatList", categoryJdbcDao.subCategoryes(id));
 		return "/subcategory";
 	}
@@ -46,7 +44,6 @@ public class HomeController {
 	
 	@GetMapping("/product/{id}")
 	public String getProduct(@PathVariable(value = "id") int id, Model model){
-//		Product product = productJdbcDao.getProduct(id).get(0);
 		model.addAttribute("productCard",productJdbcDao.findOneById(id));
 		
 		return "/product";
