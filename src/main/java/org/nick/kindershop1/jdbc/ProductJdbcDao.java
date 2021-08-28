@@ -1,6 +1,7 @@
 package org.nick.kindershop1.jdbc;
 
 import org.nick.kindershop1.entity.product.Product;
+import org.nick.kindershop1.jdbc.rowMappers.ImageMapper;
 import org.nick.kindershop1.jdbc.rowMappers.ProductMapper;
 import org.nick.kindershop1.jdbc.rowMappers.prodMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,4 +46,23 @@ public class ProductJdbcDao {
 				                                       "on opd.product_id = p.product_id " +
 				                                       "where p.product_id=?",  new prodMapper(),new Object[]{id});
 	}
+	
+	
+	public Product findOneWithImagesById(int id){
+		Product productFullImage = jdbcTemplateProd.queryForObject("select p.product_id, p.image, p.price, opd.name, opd.description " +
+				                                                           "from oc_product p join oc_product_description opd " +
+				                                                           "on opd.product_id = p.product_id " +
+				                                                           "where p.product_id=?",  new prodMapper(),new Object[]{id});
+//		collectImages(id);
+		productFullImage.setImgArray(collectImages(id));
+		
+		System.out.println("\n<<<<<<<<<"+productFullImage+"\n>>>>>>>>>>>>>");
+		
+		return productFullImage;
+	}
+	
+	private List collectImages(int id){
+		return jdbcTemplateProd.query("SELECT oc_product_image.image FROM oc_product_image WHERE oc_product_image.product_id=?", new Object[]{id}, new ImageMapper());
+	}
+	
 }

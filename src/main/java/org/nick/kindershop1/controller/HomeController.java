@@ -43,8 +43,9 @@ public class HomeController {
 	}
 	
 	@GetMapping("/product/{id}")
-	public String getProduct(@PathVariable(value = "id") int id, Model model){
-		model.addAttribute("productCard",productJdbcDao.findOneById(id));
+	public String /*getProduct*/findOneWithImagesById(@PathVariable(value = "id") int id, Model model){
+		model.addAttribute("productCard",productJdbcDao./*findOneById*/findOneWithImagesById(id));
+		System.out.println(model.toString());
 		
 		return "/product";
 	}

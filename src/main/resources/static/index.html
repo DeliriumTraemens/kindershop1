@@ -60,7 +60,7 @@
 
 
 
-
+<!--
 <div class="container mt-5">
 
     <div th:each="cat:${topCatsKey}" class="bg-warning mt-3 ">
@@ -68,13 +68,13 @@
         <h5 th:text="${cat.id}+' Айди'" />
         <p th:text="${cat.imageUrl}" />
         <img th:src="'imagesUp/'+${cat.imageUrl}" height="150" width="150"/>
-        <!--<a th:href="'/blog/' + ${cat.id}" class="=btn btn-sm btn-info">Детальнее</a>
-        <a th:href="'/blog/' + ${cat.id}" class="btn btn-sm btn-outline-secondary">Детальнее</a>-->
+        &lt;!&ndash;<a th:href="'/blog/' + ${cat.id}" class="=btn btn-sm btn-info">Детальнее</a>
+        <a th:href="'/blog/' + ${cat.id}" class="btn btn-sm btn-outline-secondary">Детальнее</a>&ndash;&gt;
         <a th:href="'/subcategory/' + ${cat.id}" class="=btn btn-sm btn-info">Субкатегории</a>
 
     </div>
 
-</div>
+</div>-->
 </body>
 
 </html>

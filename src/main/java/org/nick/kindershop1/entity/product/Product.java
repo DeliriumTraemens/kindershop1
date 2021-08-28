@@ -1,5 +1,8 @@
 package org.nick.kindershop1.entity.product;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Product {
 	private int id;
 	private int categoryId;
@@ -7,17 +10,19 @@ public class Product {
 	private String name;
 	private String description;
 	private String imageUrl;
+	private List<String> imgArray=new ArrayList<>();
 	
 	public Product(){
 	}
 	
-	public Product(int id, int categoryId, float price, String name, String description, String imageUrl) {
+	public Product(int id, int categoryId, float price, String name, String description, String imageUrl, List<String> imgArray) {
 		this.id = id;
 		this.categoryId = categoryId;
 		this.price = price;
 		this.name = name;
 		this.description = description;
 		this.imageUrl = imageUrl;
+		this.imgArray = imgArray;
 	}
 	
 	public int getId() {
@@ -68,6 +73,14 @@ public class Product {
 		this.imageUrl = imageUrl;
 	}
 	
+	public List<String> getImgArray() {
+		return imgArray;
+	}
+	
+	public void setImgArray(List<String> imgArray) {
+		this.imgArray = imgArray;
+	}
+	
 	@Override
 	public String toString() {
 		return "\nProduct{" +
@@ -77,6 +90,7 @@ public class Product {
 				       ", name='" + name + '\'' +
 				       ", description='" + description + '\'' +
 				       ", imageUrl='" + imageUrl + '\'' +
+				       ", imgArray=" + imgArray +
 				       '}';
 	}
 }
