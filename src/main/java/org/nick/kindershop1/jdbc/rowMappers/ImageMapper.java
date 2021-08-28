@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ImageMapper implements RowMapper<List> {
-	
+	//В параметрах просто List без дженерика????
 	@Override
 	public List mapRow(ResultSet rs, int rowNum) throws SQLException {
 		
