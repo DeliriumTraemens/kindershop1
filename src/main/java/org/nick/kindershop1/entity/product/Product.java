@@ -10,12 +10,14 @@ public class Product {
 	private String name;
 	private String description;
 	private String imageUrl;
-	private List<String> imgArray=new ArrayList<>();
+	
+//	private List<String> imgArray=new ArrayList<>();
+	private Iterable<ProdImage> imgArray=new ArrayList<>();
 	
 	public Product(){
 	}
 	
-	public Product(int id, int categoryId, float price, String name, String description, String imageUrl, List<String> imgArray) {
+	public Product(int id, int categoryId, float price, String name, String description, String imageUrl, Iterable<ProdImage> imgArray) {
 		this.id = id;
 		this.categoryId = categoryId;
 		this.price = price;
@@ -73,11 +75,11 @@ public class Product {
 		this.imageUrl = imageUrl;
 	}
 	
-	public List<String> getImgArray() {
+	public Iterable<ProdImage> getImgArray() {
 		return imgArray;
 	}
 	
-	public void setImgArray(List<String> imgArray) {
+	public void setImgArray(Iterable<ProdImage> imgArray) {
 		this.imgArray = imgArray;
 	}
 	
@@ -94,3 +96,4 @@ public class Product {
 				       '}';
 	}
 }
+

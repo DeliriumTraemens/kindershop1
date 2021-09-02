@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Product</h1>
+
+<h2 th:text="${productCard.name}"></h2>
+<p th:text="${productCard.description}"></p>
+<img th:src="@{'../imagesUp/'+${productCard.imageUrl}}" height="200" width="280"/><br>
+<span> <strong> PRICE</strong></span>
+<h3 th:text="${productCard.price}"></h3>
+<hr>
+
+<!--<<<<<<<<<>>>>>>>>>>>>>>>>-->
+<br>
+<p>Pictures</p><br>
+<div class="container">
+    <div class="row">
+        <div  class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3 mb-5">
+
+            <div th:each="picture1:${productCard.imgArray}" >
+            <!--    <h6 th:text="${picture1.name}"></h6>-->
+                <img th:src="@{'../imagesUp/'+${picture1.name}}" height="100" width="100" />
+            </div>
+        </div>
+    </div>
+</div>
+<!--<<<<<<<<<>>>>>>>>>>>>>>>>-->
+
+
+<!--<<<<<<<<<>>>>>>>>>>>>>>>>-->
+<!--<div class="container">
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="boxs project_widget">
+            <div class="pw_img"><img class="img-responsive" th:src="'../imagesUp/'+${productCard.imageUrl}"
+                                     alt="About the image" height="280" width="280"></div>
+            <div class="pw_content">
+                <div class="pw_header" th:text="${productCard.name}">
+                    <h6>Magazine Design</h6> <small class="text-muted">Falcon | Last Update: 12 Dec 2017</small>
+                </div>
+                <div class="pw_meta" th:text="${productCard.price}"><span>4,870 USD</span> <small class="text-muted">Budget / Salary</small> <small
+                        class="text-danger">17 Days Remaining</small></div>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+<!--<<<<<<<<<>>>>>>>>>>>>>>>>-->
+
+<!--<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="boxs project_widget">
+                <div class="pw_img"><img class="img-responsive" src="https://via.placeholder.com/280x280/FFB6C1/000000" alt="About the image"></div>
+                <div class="pw_content">
+                    <div class="pw_header"><h6>Magazine Design</h6> <small class="text-muted">Falcon | Last Update: 12 Dec 2017</small></div>
+                    <div class="pw_meta"><span>4,870 USD</span> <small class="text-muted">Budget / Salary</small> <small class="text-danger">17 Days
+                        Remaining</small></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="boxs project_widget">
+                <div class="pw_img"><img class="img-responsive" src="https://via.placeholder.com/280x280/87CEFA/000000" alt="About the image"></div>
+                <div class="pw_content">
+                    <div class="pw_header"><h6>New Dashboard</h6> <small class="text-muted">Falcon | Last Update: 17 Dec 2017</small></div>
+                    <div class="pw_meta"><span>921 USD</span> <small class="text-muted">Budget / Salary</small> <small class="text-success">Early Dec
+                        2017</small></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="boxs project_widget">
+                <div class="pw_img"><img class="img-responsive" src="https://via.placeholder.com/280x280/FF7F50/000000" alt="About the image"></div>
+                <div class="pw_content">
+                    <div class="pw_header"><h6>Mobile App</h6> <small class="text-muted">Falcon | Last Update: 21 Dec 2017</small></div>
+                    <div class="pw_meta"><span>1,870 USD</span> <small class="text-muted">Budget / Salary</small> <small class="text-danger">10 Days
+                        Remaining</small></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="boxs project_widget">
+                <div class="pw_img"><img class="img-responsive" src="https://via.placeholder.com/280x280/20B2AA/000000" alt="About the image"></div>
+                <div class="pw_content">
+                    <div class="pw_header"><h6>New Dashboard</h6> <small class="text-muted">Falcon | Last Update: 28 Dec 2017</small></div>
+                    <div class="pw_meta"><span>870 USD</span> <small class="text-muted">Budget / Salary</small> <small class="text-warning">6 Days
+                        Remaining</small></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+<!--<<<<<<<<<>>>>>>>>>>>>>>>>-->
+
+
+</body>
+</html>

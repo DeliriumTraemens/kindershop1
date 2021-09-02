@@ -1,10 +1,7 @@
 package org.nick.kindershop1.jdbc;
 
 import org.nick.kindershop1.entity.product.Product;
-import org.nick.kindershop1.jdbc.rowMappers.ImageMapper;
-import org.nick.kindershop1.jdbc.rowMappers.ProductMapper;
-import org.nick.kindershop1.jdbc.rowMappers.prodMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.nick.kindershop1.jdbc.rowMappers.*;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -54,15 +51,29 @@ public class ProductJdbcDao {
 				                                                           "on opd.product_id = p.product_id " +
 				                                                           "where p.product_id=?",  new prodMapper(),new Object[]{id});
 //		collectImages(id);
-		productFullImage.setImgArray(collectImages(id));
+
+//		productFullImage.setImgArray(collectImages(id));
 		
-		System.out.println("\n<<<<<<<<<"+productFullImage+"\n>>>>>>>>>>>>>");
+//		System.out.println("\n<<<<<<<<<"+productFullImage+"\n>>>>>>>>>>>>>");
 		
+		productFullImage.setImgArray(collectProdimages(id));
 		return productFullImage;
 	}
 	
-	private List collectImages(int id){
-		return jdbcTemplateProd.query("SELECT oc_product_image.image FROM oc_product_image WHERE oc_product_image.product_id=?", new Object[]{id}, new ImageMapper());
+	/*private*/ public List collectImages(int id){
+		return jdbcTemplateProd.query("SELECT oc_product_image.image FROM oc_product_image WHERE oc_product_image.product_id=?",
+		                              new Object[]{id}, new /*ImageMapper*/ProdImageMapper());
+	}
+	public List collectProdimages(int id){
+		return jdbcTemplateProd.query("SELECT oc_product_image.image FROM oc_product_image WHERE oc_product_image.product_id=?",
+		                              new Object[]{id}, new ProdImageMapper());
+	}
+	
+	public Product findOneByIdFullImageList(int id){
+		return jdbcTemplateProd.queryForObject("select p.product_id, p.image, p.price, opd.name, opd.description,opi.image  " +
+				                                       "from oc_product p join oc_product_description opd join oc_product_image opi " +
+				                                       "on opd.product_id = p.product_id and opi.product_id=p.product_id " +
+				                                       "where p.product_id=?", new prodFullMapper(), new Object[]{id});
 	}
 	
 }
