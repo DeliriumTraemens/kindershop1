@@ -1,22 +1,44 @@
 package org.nick.kindershop1.entity.category;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "oc_category")
+@SecondaryTable(name = "oc_category_description",pkJoinColumns = @PrimaryKeyJoinColumn(name = "category_id"))
+//	pkJoinColumns = @PrimaryKeyJoinColumn(name = "category_id") -- имя поля из Description!!!
 public class Category {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "category_id")
 	private int id;
+	@Column(name = "parent_id")
 	private int parentId;
-	private String catName;
-	private String catDescription;
+	@Column(name = "image")
 	private String imageUrl;
+	@Column(name = "status")
+	private short status;
+	@Column(name = "name",table="oc_category_description")
+	private String catName;
+	@Column(name = "description",table="oc_category_description")
+	private String catDescription;
+	
+	
+	/*-----<<<<<<>>>>>>-----*/
 	
 	public Category() {
 	}
 	
-	public Category(int id, int parentId, String catName, String catDescription, String imageUrl) {
+	public Category(int id, int parentId, String imageUrl, short status, String catName, String catDescription) {
 		this.id = id;
 		this.parentId = parentId;
+		this.imageUrl = imageUrl;
+		this.status = status;
 		this.catName = catName;
 		this.catDescription = catDescription;
-		this.imageUrl = imageUrl;
 	}
+	
+	/*-----<<<<<<>>>>>>-----*/
+	
 	
 	public int getId() {
 		return id;
@@ -32,6 +54,22 @@ public class Category {
 	
 	public void setParentId(int parentId) {
 		this.parentId = parentId;
+	}
+	
+	public String getImageUrl() {
+		return imageUrl;
+	}
+	
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+	
+	public short getStatus() {
+		return status;
+	}
+	
+	public void setStatus(short status) {
+		this.status = status;
 	}
 	
 	public String getCatName() {
@@ -50,22 +88,17 @@ public class Category {
 		this.catDescription = catDescription;
 	}
 	
-	public String getImageUrl() {
-		return imageUrl;
-	}
-	
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
-	}
+	/*-----<<<<<<>>>>>>-----*/
 	
 	@Override
 	public String toString() {
 		return "\nCategory{" +
 				       "id=" + id +
 				       ", parentId=" + parentId +
+				       ", imageUrl='" + imageUrl + '\'' +
+				       ", status=" + status +
 				       ", catName='" + catName + '\'' +
 				       ", catDescription='" + catDescription + '\'' +
-				       ", imageUrl='" + imageUrl + '\'' +
-				       '}';
+				       '}'+"\n";
 	}
 }

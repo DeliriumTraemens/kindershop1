@@ -3,6 +3,7 @@ package org.nick.kindershop1.controller;
 import org.nick.kindershop1.entity.category.Category;
 import org.nick.kindershop1.jdbc.CategoryJdbcDao;
 import org.nick.kindershop1.jdbc.ProductJdbcDao;
+import org.nick.kindershop1.repository.CategoryRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,10 +21,16 @@ public class HomeController {
 	@Autowired
 	ProductJdbcDao productJdbcDao;
 	
+	@Autowired
+	CategoryRepo categoryRepo;
+	
 	@GetMapping("/")
 	public String home(Model model){
 		List<Category> topLevelCats = categoryJdbcDao.topLevelCategories();
 		model.addAttribute("topCatsKey",topLevelCats);
+		
+		List<Category> topCategList = categoryRepo.findAllByParentIdAndStatus(1130, (short) 1);
+		System.out.println("\n\n\n-------JPA TEST-------\n"+topCategList+"\n\n\n-------JPA TEST-------\n\n");
 
 		return "../static/index";
 	}
