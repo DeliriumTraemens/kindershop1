@@ -42,14 +42,9 @@ public class HomeController {
 	}
 	
 	@GetMapping("/product/{id}")
-//	public String /*getProduct*/findOneWithImagesById(@PathVariable(value = "id") int id, Model model){
 	public String findOneByIdFullImageList(@PathVariable(value = "id") int id, Model model){
-//		List<ProdImage>pics=productJdbcDao.collectProdimages(id);
 		
-		
-		model.addAttribute("productCard",productJdbcDao./*findOneById*/findOneWithImagesById/*findOneByIdFullImageList*/(id));
-		model.addAttribute("pics",productJdbcDao.collectProdimages(id));
-//		System.out.println(model.toString());
+		model.addAttribute("productCard",productJdbcDao.findOneWithImagesById(id));
 		System.out.println("\n>>>картинкес<<<\n"+productJdbcDao.collectProdimages(id)+"\n>>>-------------<<<\n");
 		
 		return "../static/product";
