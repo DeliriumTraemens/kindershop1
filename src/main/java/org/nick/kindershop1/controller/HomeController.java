@@ -26,24 +26,27 @@ public class HomeController {
 	
 	@GetMapping("/")
 	public String home(Model model){
-		List<Category> topLevelCats = categoryJdbcDao.topLevelCategories();
+//		List<Category> topLevelCats = categoryJdbcDao.topLevelCategories();
+		List<Category> topLevelCats = categoryRepo.findAllByParentIdAndStatus(0, (short) 1);
 		model.addAttribute("topCatsKey",topLevelCats);
 		
-		List<Category> topCategList = categoryRepo.findAllByParentIdAndStatus(1130, (short) 1);
-		System.out.println("\n\n\n-------JPA TEST-------\n"+topCategList+"\n\n\n-------JPA TEST-------\n\n");
+//		List<Category> topCategList = categoryRepo.findAllByParentIdAndStatus(1130, (short) 1);
+		System.out.println("\n\n\n-------JPA TEST-------\n"+topLevelCats+"\n\n\n-------JPA TEST-------\n\n");
 
 		return "../static/index";
 	}
 	
 	@GetMapping("/subcategory/{id}")
 	public String subcategoryId(@PathVariable(value = "id") int id, Model model){
-		model.addAttribute("subCatList", categoryJdbcDao.subCategoryes(id));
+//		model.addAttribute("subCatList", categoryJdbcDao.subCategoryes(id));
+		model.addAttribute("subCatList", categoryRepo.findAllByParentIdAndStatus(id, (short) 1));
 		return "/subcategory";
 	}
 	
 	@GetMapping("/subcategoryProd/{id}")
 	public String subCatProd(@PathVariable(value = "id") int id, Model model){
-		model.addAttribute("subCategList", categoryJdbcDao.subCategoryes(id));
+//		model.addAttribute("subCategList", categoryJdbcDao.subCategoryes(id));
+		model.addAttribute("subCategList", categoryRepo.findAllByParentIdAndStatus(id, (short) 1));
 		model.addAttribute("subCatProd",productJdbcDao.getAllProduct(id));
 		return "/subactproduct";
 	}
