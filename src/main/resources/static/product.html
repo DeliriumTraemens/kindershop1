@@ -12,8 +12,8 @@
 <div class="container">
     <h2 th:text="${productCard.name}"></h2>
     <p th:text="${productCard.description}"></p>
-    <div class="shadow p-3 mb-5 bg-white rounded">
-        <img th:src="@{'../imagesUp/'+${productCard.imageUrl}}" height="200" width="280"/><br>
+    <div class="shadow p-4 mb-5 bg-white rounded">
+        <img th:src="@{'../imagesUp/'+${productCard.imageUrl}}" height="200" width="200"/><br>
     </div>
     <span> <strong> PRICE</strong></span>
     <h3 th:text="${productCard.price}"></h3>
@@ -27,7 +27,7 @@
     <div class="row">
         <div  class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3 mb-5">
             <div th:each="picture1:${productCard.imgArray}" >
-                <div class="shadow p-3 mb-5 bg-white rounded">
+                <div class="shadow p-3 mb-5 mr-4 bg-white rounded">
                     <div class="pw_img mr-2">
                         <img th:src="@{'../imagesUp/'+${picture1.name}}" height="100" width="100" />
                     </div>
