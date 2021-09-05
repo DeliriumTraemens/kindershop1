@@ -12,6 +12,7 @@ public class Product {
 	private String imageUrl;
 	
 //	private List<String> imgArray=new ArrayList<>();
+	
 	private Iterable<ProdImage> imgArray=new ArrayList<>();
 	
 	public Product(){
