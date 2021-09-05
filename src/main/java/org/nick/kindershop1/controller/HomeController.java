@@ -2,6 +2,7 @@ package org.nick.kindershop1.controller;
 
 import org.nick.kindershop1.entity.category.Category;
 import org.nick.kindershop1.jdbc.CategoryJdbcDao;
+//import org.nick.kindershop1.jdbc.ProductJdbcDao;
 import org.nick.kindershop1.jdbc.ProductJdbcDao;
 import org.nick.kindershop1.repository.CategoryRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,8 @@ public class HomeController {
 	
 	@Autowired
 	CategoryRepo categoryRepo;
+	
+	
 	
 	@GetMapping("/")
 	public String home(Model model){
@@ -47,16 +50,17 @@ public class HomeController {
 	public String subCatProd(@PathVariable(value = "id") int id, Model model){
 //		model.addAttribute("subCategList", categoryJdbcDao.subCategoryes(id));
 		model.addAttribute("subCategList", categoryRepo.findAllByParentIdAndStatus(id, (short) 1));
+//		model.addAttribute("subCatProd",productRepo.findAllByCategoryId(id));
 		model.addAttribute("subCatProd",productJdbcDao.getAllProduct(id));
 		return "/subactproduct";
 	}
 	
 	@GetMapping("/product/{id}")
 	public String findOneByIdFullImageList(@PathVariable(value = "id") int id, Model model){
-		
+//
 		model.addAttribute("productCard",productJdbcDao.findOneWithImagesById(id));
-		System.out.println("\n>>>картинкес<<<\n"+productJdbcDao.collectProdimages(id)+"\n>>>-------------<<<\n");
-		
+//		System.out.println("\n>>>картинкес<<<\n"+productJdbcDao.collectProdimages(id)+"\n>>>-------------<<<\n");
+//
 		return "../static/product";
 	}
 	
