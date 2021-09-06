@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name ="oc_product")
+@SecondaryTable(name = "oc_product_description",pkJoinColumns=@PrimaryKeyJoinColumn(name="product_id"))
 public class Tovar {
 	@Id
 	@GeneratedValue
@@ -16,17 +17,25 @@ public class Tovar {
 	@Column(name = "image")
 	private String image;
 	
+	@Column(name = "name",table = "oc_product_description")
+	private String name;
+	
+	@Column(name = "description",table = "oc_product_description")
+	private String description;
+	
 	/*-------------------*/
 	
 	public Tovar() {
 	}
 	
-	public Tovar(int id, float price, String image) {
+	
+	public Tovar(int id, float price, String image, String name, String description) {
 		this.id = id;
 		this.price = price;
 		this.image = image;
+		this.name = name;
+		this.description = description;
 	}
-	
 	/*-------------------*/
 	
 	public int getId() {
@@ -52,14 +61,33 @@ public class Tovar {
 	public void setImage(String image) {
 		this.image = image;
 	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+	
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
 	/*-------------------*/
 	
 	@Override
 	public String toString() {
 		return "\nTovar{" +
-				       "id=" + id +
-				       ", price=" + price +
-				       ", image='" + image + '\'' +
+				       "\n\tid=" + id +
+				       ",\n\tprice=" + price +
+				       ", \n\timage='" + image + '\'' +
+				       ", \n\tname='" + name + '\'' +
+				       ", \n\tdescription='" + description + '\'' +
 				       '}';
 	}
 }
