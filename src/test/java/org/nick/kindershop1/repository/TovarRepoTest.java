@@ -31,6 +31,12 @@ class TovarRepoTest {
 	
 	@Test
 	public void findById() {
-		System.out.println(tovarRepo.findById(264357));
+		System.out.println(tovarRepo.findById(264352));
 	}
+	
+	@Test
+	public void findByCategoryId() {
+		System.out.println(tovarRepo.findByCategoryId(1117));
+	}
+	
 }

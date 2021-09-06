@@ -1,15 +1,39 @@
 package org.nick.kindershop1.entity.product;
 
+import org.springframework.context.annotation.EnableMBeanExport;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "oc_product_image")
 public class ProdImage{
+	
+	@Id
+	@GeneratedValue
+	@Column(name="product_image_id")
+	private int id;
+	
+	@Column(name="image")
 	private String name;
-	private String url="/path_to_image";
+	
+	/*--------*/
 	
 	public ProdImage() {
 	}
 	
-	public ProdImage(String name, String url) {
+	public ProdImage(int id, String name) {
+		this.id = id;
 		this.name = name;
-		this.url = url;
+	}
+	
+	/*--------*/
+	
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	public String getName() {
@@ -20,19 +44,13 @@ public class ProdImage{
 		this.name = name;
 	}
 	
-	public String getUrl() {
-		return url;
-	}
-	
-	public void setUrl(String url) {
-		this.url = url;
-	}
+	/*--------*/
 	
 	@Override
 	public String toString() {
-		return "ProdImage{" +
-				       "name='" + name + '\'' +
-				       ", url='" + url + '\'' +
+		return "\n\tProdImage{" +
+				       "\n\tid=" + id +
+				       ", \n\tname='" + name + '\'' +
 				       '}';
 	}
 }

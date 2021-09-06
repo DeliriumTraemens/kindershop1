@@ -1,10 +1,15 @@
 package org.nick.kindershop1.entity.product;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name ="oc_product")
-@SecondaryTable(name = "oc_product_description",pkJoinColumns=@PrimaryKeyJoinColumn(name="product_id"))
+@SecondaryTables({
+		@SecondaryTable(name="oc_product_description",pkJoinColumns=@PrimaryKeyJoinColumn(name="product_id")),
+		@SecondaryTable(name="oc_product_to_category",pkJoinColumns=@PrimaryKeyJoinColumn(name="product_id"))
+})
+//@SecondaryTable(name = "oc_product_description",pkJoinColumns=@PrimaryKeyJoinColumn(name="product_id"))
 public class Tovar {
 	@Id
 	@GeneratedValue
@@ -23,6 +28,16 @@ public class Tovar {
 	@Column(name = "description",table = "oc_product_description")
 	private String description;
 	
+	@Column(name = "category_id",table = "oc_product_to_category")
+//	@OneToMany
+//	@JoinColumn(name = "product_id",table = "oc_product_to_category")
+	private int categoryId;
+//	private List<Integer> categoryId;
+	
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "product_id")
+	private List<ProdImage> imgArray;
+	
 	/*-------------------*/
 	
 	public Tovar() {
@@ -36,6 +51,26 @@ public class Tovar {
 		this.name = name;
 		this.description = description;
 	}
+	
+	public Tovar(int id, float price, String image, String name, String description, int categoryId) {
+		this.id = id;
+		this.price = price;
+		this.image = image;
+		this.name = name;
+		this.description = description;
+		this.categoryId = categoryId;
+	}
+	
+	public Tovar(int id, float price, String image, String name, String description, int categoryId, List<ProdImage> imgArray) {
+		this.id = id;
+		this.price = price;
+		this.image = image;
+		this.name = name;
+		this.description = description;
+		this.categoryId = categoryId;
+		this.imgArray = imgArray;
+	}
+	
 	/*-------------------*/
 	
 	public int getId() {
@@ -78,16 +113,39 @@ public class Tovar {
 		this.description = description;
 	}
 	
-	/*-------------------*/
+	public int getCategoryId() {
+		return categoryId;
+	}
+	
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
 	
 	@Override
 	public String toString() {
 		return "\nTovar{" +
-				       "\n\tid=" + id +
-				       ",\n\tprice=" + price +
-				       ", \n\timage='" + image + '\'' +
-				       ", \n\tname='" + name + '\'' +
-				       ", \n\tdescription='" + description + '\'' +
+				       "\nid=" + id +
+				       ", \nprice=" + price +
+				       ", \nimage='" + image + '\'' +
+				       ", \nname='" + name + '\'' +
+				       ", \ndescription='" + description + '\'' +
+				       ", \ncategoryId=" + categoryId +
+				       ", \nimgArray=" + imgArray +
 				       '}';
 	}
+	
+	/*-------------------*/
+	
+//	@Override
+//	public String toString() {
+//		return "\nTovar{" +
+//				       "\n\tid=" + id +
+//				       ",\n\tprice=" + price +
+//				       ", \n\timage='" + image + '\'' +
+//				       ", \n\tname='" + name + '\'' +
+//				       ", \n\tdescription='" + description + '\'' +
+//				       '}';
+//	}
+	
+	
 }
