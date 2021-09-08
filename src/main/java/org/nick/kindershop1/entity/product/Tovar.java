@@ -36,7 +36,17 @@ public class Tovar {
 	
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "product_id")
+//@ElementCollection
+//@CollectionTable(
+//		name = "oc_product_image",//table name to join on
+//		joinColumns = @JoinColumn(
+//				//join LUCKY_NUMBERS on COOKIE_ID = ID
+//				name = "product_id"/*,
+//				referencedColumnName = "product_id"*/
+//		)
+//)
 	private List<ProdImage> imgArray;
+//	private List<ProdImage> imgArray;
 	
 	/*-------------------*/
 	
@@ -120,6 +130,15 @@ public class Tovar {
 	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
+	
+	public List<ProdImage> getImgArray() {
+		return imgArray;
+	}
+	
+	public void setImgArray(List<ProdImage> imgArray) {
+		this.imgArray = imgArray;
+	}
+	/*-------------------*/
 	
 	@Override
 	public String toString() {
