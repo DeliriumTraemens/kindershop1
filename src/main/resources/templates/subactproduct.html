@@ -15,6 +15,7 @@
 <h1>Subcategory products</h1>
 <br>
 <hr>
+<section>
 
 <div class="album py-5 bg-light">
     <div class="container">
@@ -111,6 +112,9 @@
                 th:each="i:${#numbers.sequence(0,subCatProd.getTotalPages())}">
                 <a th:href="${'/subcategoryProd/'+${subCat.id}(page=${i})}" th:text="${i}+' page'"
                 th:classappend="${currentPage}==${i}?'active':''" class="nav-link"></a>
+                <!--/*@thymesVar id="subCat" type=""*/-->
+                <a th:href="'/subcategoryProd/' + ${subCat.id}" class="=btn btn-sm btn-success shadow ">Подробней</a>
+
             </li>
         </ul>
         <hr>
@@ -134,5 +138,6 @@
 <br>
 <hr>
 
+</section>
 </body>
 </html>
