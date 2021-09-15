@@ -31,7 +31,7 @@ class TovarRepoTest {
 	
 	@Test
 	public void findById() {
-		System.out.println(tovarRepo.findById(264354));
+		System.out.println(tovarRepo.findById(156081));
 	}
 	
 	@Test
