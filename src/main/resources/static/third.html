@@ -14,5 +14,48 @@
 <img src="images/iphone_2.jpg" height="546" width="700"/><img src="images/hp_1.jpg" height="407" width="500"/>
 <br><img src="images/IMGa6369b3d9513ce57ecaaa73e386c0f98-400x400.jpg" height="200" width="200"/>
 
+<!--<div class="container mt-5">
+
+    <div th:each="cat:${subCatList}" class="bg-warning mt-3 ">
+        <h3 th:text="${cat.catName}" />
+        <h5 th:text="${cat.id}+' Айди'" />
+        <p th:text="${cat.imageUrl}" />
+        <img th:src="'../imagesUp/'+${cat.imageUrl}" height="150" width="150"/>
+        <a th:href="'/blog/' + ${cat.id}" class="=btn btn-sm btn-info">Детальнее</a>
+        <a th:href="'/blog/' + ${cat.id}" class="btn btn-sm btn-outline-secondary">Детальнее</a>
+        <a th:href="'/subcategory/' + ${cat.id}" class="=btn btn-sm btn-info">Субкатегории</a>
+
+    </div>
+
+</div>-->
+
+<!--<div class="card-group" th:each="cat:${topCatsKey}">
+    &lt;!&ndash;карточка&ndash;&gt;
+    <div class="card shadow" style="width: 18rem;">
+        <div class="card-header" th:text="${cat.catName}" style="background-color: bisque; font-weight: bold ">
+            <small>
+                Featured
+            </small>
+        </div>
+        <a th:href="'/subcategory/' + ${cat.id}" >
+            &lt;!&ndash;<img  th:src="'imagesUp/'+${cat.imageUrl}" height="150" width="150"/>&ndash;&gt;
+            <img  th:src="'imagesUp/'+${cat.imageUrl}" class="card-img-top" alt="..."/>
+
+        </a>
+        <div class="card-body" >
+            <h4 class="lead text-muted" th:text="${cat.catName}" />
+            <p class="card-text" th:text="${cat.id}"/>
+        </div>&lt;!&ndash;Card Body&ndash;&gt;
+        <div class="card-footer">
+            <div class="btn-group">
+                <a th:href="'/subcategory/' + ${cat.id}" class="btn btn-primary" type="button">Субкатегории</a>
+                &lt;!&ndash; <a th:href="'/blog/' + ${el.id} + '/edit'" class="btn btn-sm btn-outline-secondary">Edit</a>&ndash;&gt;
+                &lt;!&ndash;<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                     <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>&ndash;&gt;
+            </div>&lt;!&ndash;Btn Group&ndash;&gt;
+        </div>&lt;!&ndash;Card Footer&ndash;&gt;
+    </div>&lt;!&ndash;CARD&ndash;&gt;
+</div>&lt;!&ndash;Card Group TH:EACH&ndash;&gt;-->
+
 </body>
 </html>

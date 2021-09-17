@@ -12,50 +12,45 @@
 <header th:insert="blocks/header :: header"></header>
 
 
-<div class="album py-5 bg-light">
     <h1>Main Page</h1>
 
-</div>
 <br>
 <hr>
 
-<hr>
-<br>
 <div class="album py-5 bg-light">
     <div class="container">
-
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
 
-            <div class="mb-4" th:each="cat:${topCatsKey}">
+            <div class="card-group" th:each="cat:${topCatsKey}">
                 <!--карточка-->
-                <div class="col">
-<!--                    <div class="card shadow-sm">-->
-                    <div class="card" style="width: 18rem;">
-                        <a th:href="'/subcategory/' + ${cat.id}" >
-<!--                        <img  th:src="'imagesUp/'+${cat.imageUrl}" height="150" width="150"/>-->
-                         <img  th:src="'imagesUp/'+${cat.imageUrl}" class="card-img-top" alt="..."/>
-
-                        <div class="card-body" >
-                            <h4 class="lead text-muted" th:text="${cat.catName}" />
-                            <p class="card-text" th:text="${cat.id}"/>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <a th:href="'/subcategory/' + ${cat.id}" class="=btn btn-sm btn-info">Субкатегории</a>
-                                   <!-- <a th:href="'/blog/' + ${el.id} + '/edit'" class="btn btn-sm btn-outline-secondary">Edit</a>-->
-                                    <!--<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>-->
-                                </div>
-
-                            </div>
+                    <div class="card shadow" style="width: 18rem;">
+                        <div class="card-header mt-2" th:text="${cat.catName}" style="background-color: bisque; font-weight: bold; border-radius:15px">
+                        <small>
+                            Featured
+                        </small>
                         </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
+                     <a th:href="'/subcategory/' + ${cat.id}" >
+                       <!--<img  th:src="'imagesUp/'+${cat.imageUrl}" height="150" width="150"/>-->
+                       <img  th:src="'imagesUp/'+${cat.imageUrl}" class="card-img-top" alt="..."/>
 
-        </div>
-    </div>
-</div>
+                     </a>
+                         <div class="card-body" >
+                           <h4 class="lead text-muted" th:text="${cat.catName}" />
+                           <p class="card-text" th:text="${cat.id}"/>
+                         </div><!--Card Body-->
+                         <div class="card-footer">
+
+                             <div class="d-grid gap-2">
+                                 <div class="btn-group">
+                                     <a th:href="'/subcategory/' + ${cat.id}" class="btn btn-primary" type="button">Субкатегории</a>
+                                 </div><!--Btn Group-->
+                             </div>
+                         </div><!--Card Footer-->
+                    </div><!--CARD-->
+            </div><!--Card Group TH:EACH-->
+                </div><!--Row row-cols-1-->
+            </div><!--Container-->
+        </div><!--Album-->
 
 
 

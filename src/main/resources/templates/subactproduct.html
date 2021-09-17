@@ -17,127 +17,98 @@
 <hr>
 <section>
 
-<div class="album py-5 bg-light">
+    <div class="album py-5 bg-light">
     <div class="container">
-
-
-
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
 
-
-            <div class="mb-4" th:each="subCat:${subCategList}">
+            <div class="card-group" th:each="subCat:${subCategList}">
                 <!--карточка-->
-                <div class="col">
-                    <!--<div class="card shadow-sm">-->
-                    <div class="shadow p-3 mb-5 bg-white rounded">
+                        <div class="card shadow p-3 mb-5 bg-white rounded">
 
-                        <img th:src="'../imagesUp/'+${subCat.imageUrl}" class="card-img-top"/>
+                            <img th:src="'../imagesUp/'+${subCat.imageUrl}" class="card-img-top"/>
 
-                        <div class="card-body" >
-                            <h4 class="lead text-muted" th:text="${subCat.catName}" />
-                            <p class="card-text" th:text="${subCat.id}"/>
-                            <div class="d-flex justify-content-between align-items-center">
+                            <div class="card-body" >
+                                <h4 class="lead text-muted" th:text="${subCat.catName}" />
+                                <p class="card-text" th:text="${subCat.id}"/>
+                            </div><!--Card body-->
+                        <div class="card-footer">
+                            <div class="d-grid gap-2">
                                 <div class="btn-group">
-                                   <!-- <a th:href="'/subcategory/' + ${subCat.id}" class="=btn btn-sm btn-success shadow">Субкатегории</a>-->
-                                    <a th:href="'/subcategoryProd/' + ${subCat.id}" class="=btn btn-sm btn-success shadow ">Подробней</a>
-
-                                    <!-- <a th:href="'/blog/' + ${el.id} + '/edit'" class="btn btn-sm btn-outline-secondary">Edit</a>-->
-                                    <!--<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>-->
-                                </div>
+                                    <a th:href="'/subcategoryProd/' + ${subCat.id}" class="btn btn-primary" type="button">Подробней</a>
+                                </div><!--Btn group-->
 
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                        </div><!--Card Footer-->
 
-        </div>
-    </div>
-</div>
+                        </div><!--CARD-->
+                    </div><!--Card Group-->
+            </div><!--Row cols-->
+        </div><!--Container-->
+    </div><!--Album-->
 
 <hr>
     <h2>Subcategory products</h2>
 <hr>
+    <h4>List</h4>
+    <hr>
+    <!--Navigation-->
+    <ul class="nav nav-pills">
+       <li class="nav-item"
+           th:each="i:${#numbers.sequence(0,subCatProd.totalPages-1)}">
+             <a th:href="@{'/subcategoryProd/'+${catId}(page=${i})}" th:text="${i}+' page'"
+                th:classappend="${currentPage}==${i}?'active':''" class="nav-link"></a>
+       </li>
+    </ul>
+    <hr>
+    <!---->
+<!---->
 
-<div class="album py-5 bg-light">
+    <div class="album py-5 bg-light">
     <div class="container">
-
-
-
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
 
-            <div class="mb-4" th:each="subCatProd:${subCatProd}">
+            <div class="card-group" th:each="subCatProd:${subCatProd}">
                 <!--карточка-->
-                <div class="col">
-                    <!--<div class="card shadow-sm">-->
-                    <div class="shadow p-3 mb-5 bg-white rounded">
-
-<!--                        <img th:src="'../imagesUp/'+${subCatProd.imageUrl}" height="150" width="150"/>-->
+                    <div class="card shadow p-3 mb-5 bg-white rounded">
+<!--                    <img th:src="'../imagesUp/'+${subCatProd.imageUrl}" height="150" width="150"/>-->
                         <img th:src="'../imagesUp/'+${subCatProd.image}" class="card-img-top"/>
 
                         <div class="card-body" >
                             <h4 class="lead text-muted" th:text="${subCatProd.name}" />
                             <p class="card-text" th:text="${subCatProd.id}"/>
                             <p class="card-text" th:text="${subCatProd.categoryId}"/>
-                            <!--<p class="card-text" th:text="${subCat.description}"/>-->
                             <p class="card-text" th:text="${subCatProd.price}"/>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                   <!-- <a th:href="'/subcategory/' + ${subCatProd.id}" class="=btn btn-sm btn-warning shadow">Субкатегории</a>-->
-                                    <a th:href="'/product/' + ${subCatProd.id}" class="=btn btn-sm btn-danger shadow ">Карточка</a>
+                        </div><!--Card Body-->
+                               <div class="card-footer">
+                                   <div class="d-grid gap-2">
+                                       <div class="btn-group">
+                                           <a th:href="'/product/' + ${subCatProd.id}" class="btn btn-warning" type="button">Карточка</a>
+                                       </div><!--Btn Group-->
+                                   </div><!--D-Grid FULL WIDTH BUTTON-->
 
-                                    <!-- <a th:href="'/blog/' + ${el.id} + '/edit'" class="btn btn-sm btn-outline-secondary">Edit</a>-->
-                                    <!--<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>-->
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                               </div><!--Card Footer-->
 
 
-
-            </div>
-
-
-
+                    </div><!--CARD-->
+                </div><!--Card Group-->
         </div><!--Row cols-1-->
+        </div><!--Container-->
+        </div><!--Album-->
 
-        <!---->
-        <hr>
-        <ul class="nav nav-pills">
-            <li class="nav-item"
-                th:each="i:${#numbers.sequence(0,subCatProd.getTotalPages())}">
-                <a th:href="${'/subcategoryProd/'+${subCat.id}(page=${i})}" th:text="${i}+' page'"
-                th:classappend="${currentPage}==${i}?'active':''" class="nav-link"></a>
-                <!--/*@thymesVar id="subCat" type=""*/-->
-                <a th:href="'/subcategoryProd/' + ${subCat.id}" class="=btn btn-sm btn-success shadow ">Подробней</a>
+    <!--Navigation-->
+    <ul class="nav nav-pills">
+        <li class="nav-item"
+            th:each="i:${#numbers.sequence(0,subCatProd.totalPages-1)}">
+            <a th:href="@{'/subcategoryProd/'+${catId}(page=${i})}" th:text="${i}+' page'"
+               th:classappend="${currentPage}==${i}?'active':''" class="nav-link"></a>
+        </li>
+    </ul>
+    <hr>
+    <!---->
 
-            </li>
-        </ul>
-        <hr>
-        <!--th:href="'/subcategoryProd/' + ${subCat.id}"-->
-
-    </div><!--Container-->
-
-
-</div>
-<!---->
-<hr>
-<ul class="nav nav-pills">
-    <li class="nav-item"
-        th:each="i:${#numbers.sequence(0,subCatProd.getTotalPages()-1)}">
-        <a th:href="@{/(page=${i})}" th:text="${i}+' page'"
-           th:classappend="${currentPage}==${i}?'active':''" class="nav-link"></a>
-    </li>
-</ul>
-<hr>
-<!---->
-<br>
-<hr>
 
 </section>
+
+
 </body>
 </html>

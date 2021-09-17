@@ -43,7 +43,7 @@ public class HomeController {
 		model.addAttribute("topCatsKey",topLevelCats);
 		
 //		List<Category> topCategList = categoryRepo.findAllByParentIdAndStatus(1130, (short) 1);
-		System.out.println("\n\n\n-------JPA TEST-------\n"+topLevelCats+"\n\n\n-------JPA TEST-------\n\n");
+//		System.out.println("\n\n\n-------JPA TEST-------\n"+topLevelCats+"\n\n\n-------JPA TEST-------\n\n");
 
 		return "../static/index";
 	}
@@ -57,13 +57,12 @@ public class HomeController {
 	
 	@GetMapping("/subcategoryProd/{id}")
 	public String subCatProd(@PathVariable(value = "id") int id, Model model, @RequestParam(defaultValue="0") int page){
-//		model.addAttribute("subCategList", categoryJdbcDao.subCategoryes(id));
 		model.addAttribute("subCategList", categoryRepo.findAllByParentIdAndStatus(id, (short) 1));
-//		model.addAttribute("subCatProd",tovarRepo.findByCategoryId(id));
-		model.addAttribute("subCatProd",tovarRepo.findByCategoryId(id, PageRequest.of(page, 4)));
+		model.addAttribute("subCatProd",tovarRepo.findByCategoryId(id, PageRequest.of(page, 16)));
+		
 		model.addAttribute("currentPage",page);
-//		model.addAttribute("subCatProd",productRepo.findAllByCategoryId(id));
-//		model.addAttribute("subCatProd",productJdbcDao.getAllProduct(id));
+		model.addAttribute("catId",id);
+		
 		
 //		System.out.println("\n Tovar List\n"+tovarRepo.findByCategoryId(id));
 		return "/subactproduct";
