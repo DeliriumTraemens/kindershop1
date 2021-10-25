@@ -12,6 +12,17 @@
 <header th:insert="blocks/header :: header"></header>
 
 <h1>Product</h1>
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" >
+            <a href="/" >КАТАЛОГ</a>
+        </li>
+        <li class="breadcrumb-item" th:each="i:${breadCrumbs}">
+            <a th:href="@{'/subcategoryProd/'+${i.getId()}}" th:text="${i.getCatName()}"></a>
+        </li>
+        <li th:text="'-->'+${productCardJpa.name}"></li>
+    </ol>
+</nav>
 <div class="container">
 <!--    <h2 th:text="${productCard.name}"></h2>-->
     <h2 th:text="${productCardJpa.name}"></h2>

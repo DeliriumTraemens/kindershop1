@@ -14,7 +14,8 @@ public class MyWebConfig implements WebMvcConfigurer {
 	// Устанавливаем каталог статических файлов
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry){
-		registry.addResourceHandler("/imagesUp/**").addResourceLocations("file:D:/docs/kinder-pics/");
+		registry.addResourceHandler("/imagesUp/**")
+				.addResourceLocations("file:D:/docs/kinder-pics/");
 		
 //		registry.addResourceHandler("/imagesArr/**").addResourceLocations("file:D:/docs/kinder-pics/");
 //		registry.addResourceHandler("/uploadImg/**").addResourceLocations("file:E:/idea/nlxx/hhxx/src/main/resources/static/uploadImg/");

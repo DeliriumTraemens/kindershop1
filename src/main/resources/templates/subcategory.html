@@ -15,6 +15,23 @@
 <br>
 <hr>
 
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" >
+            <a href="/" >КАТАЛОГ</a>
+        </li>
+        <li class="breadcrumb-item" th:each="i:${crumbs}">
+            <a th:href="@{'/subcategoryProd/'+${i.getId()}}" th:text="${i.getCatName()}"></a>
+        </li>
+    </ol>
+</nav>
+
+<!--<ul class="nav nav-pills">
+    <li class="nav-item"
+        th:each="i:${crumbs}">
+        <a th:href="@{'/subcategoryProd/'+${i.getId()}}" th:text="${i.getCatName()}"></a>
+    </li>
+</ul>-->
 <br>
 <hr>
 <div class="album py-5 bg-light">
@@ -29,15 +46,25 @@
 
                     <div class="card-body" >
                         <h4 class="lead text-muted" th:text="${subCat.catName}" />
-                        <p class="card-text" th:text="${subCat.id}"/>
+                        <p class="card-text" th:text="'Id '+${subCat.id}"/>
+                        <p class="card-text" th:text="'Parent Id '+${subCat.getParentId()}"/>
                     </div><!--Card Body-->
                         <div class="card-footer">
                             <div class="d-grid gap-2">
                             <div class="btn-group">
                                 <a th:href="'/subcategoryProd/' + ${subCat.id}" class="btn btn-primary" type="button">Подробнее</a>
+                                <a th:href="'/subcategoryProdEdit/' + ${subCat.id}" class="btn btn-danger" type="button">Edit</a>
                             </div><!--Btn Group-->
 
                             </div><!--d-grid FULL WIDTH BUTTON-->
+<!--                            <form action="/categoruPic" method="post" enctype="multipart/form-data">-->
+<!--                                <div class="custom-file">-->
+<!--                                    <label for="customFile" class="form-label">Выберите картинку</label>-->
+<!--                                    <input type="file" class="form-control" data-preview-file-type="any" name="file" id="customFile">-->
+<!--                                    <input type="submit" class="btn btn-primary">-->
+<!--                                    &lt;!&ndash;<br>&ndash;&gt;-->
+<!--                                </div>-->
+<!--                            </form>-->
                         </div><!--Card Footer-->
 
                 </div><!--CARD-->

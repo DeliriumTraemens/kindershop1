@@ -11,5 +11,6 @@ public interface CategoryRepo extends JpaRepository<Category, Integer> {
 	
 	List<Category> findIdAndNameByParentId(int catParId);
 	
-	List<Category> findIdAndParentIdAndNameById(int currId);
+//	List<Category> findIdAndParentIdAndNameById(int currId);
+	Category findIdAndParentIdAndNameById(int currId);
 }

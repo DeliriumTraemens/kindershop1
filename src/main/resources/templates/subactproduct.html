@@ -15,6 +15,23 @@
 <h1>Subcategory products</h1>
 <br>
 <hr>
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item" >
+            <a href="/" >КАТАЛОГ</a>
+        </li>
+        <li class="breadcrumb-item" th:each="i:${breadCrumbs}">
+            <a th:href="@{'/subcategoryProd/'+${i.getId()}}" th:text="${i.getCatName()}"></a>
+        </li>
+    </ol>
+</nav>
+<!--<ol class="nav nav-pills">
+    <li class="nav-item mr-4"
+        th:each="i:${breadCrumbs}">
+        <a th:href="@{'/subcategoryProd/'+${i.getId()}}" th:text="${i.getCatName()+'->'}"></a>
+    </li>
+</ol>-->
+<hr>
 <section>
 
     <div class="album py-5 bg-light">
@@ -29,7 +46,8 @@
 
                             <div class="card-body" >
                                 <h4 class="lead text-muted" th:text="${subCat.catName}" />
-                                <p class="card-text" th:text="${subCat.id}"/>
+                                <p class="card-text" th:text="'Id '+${subCat.id}"/>
+                                <p class="card-text" th:text="'Parent Id '+${subCat.getParentId()}"/>
                             </div><!--Card body-->
                         <div class="card-footer">
                             <div class="d-grid gap-2">
@@ -75,9 +93,9 @@
 
                         <div class="card-body" >
                             <h4 class="lead text-muted" th:text="${subCatProd.name}" />
-                            <p class="card-text" th:text="${subCatProd.id}"/>
-                            <p class="card-text" th:text="${subCatProd.categoryId}"/>
-                            <p class="card-text" th:text="${subCatProd.price}"/>
+                            <p class="card-text" th:text="'Product Id '+${subCatProd.id}"/>
+                            <p class="card-text" th:text="'Category Id '+${subCatProd.categoryId}"/>
+                            <p class="card-text" th:text="'Price '+${subCatProd.price}"/>
                         </div><!--Card Body-->
                                <div class="card-footer">
                                    <div class="d-grid gap-2">
